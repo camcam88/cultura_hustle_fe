@@ -1,5 +1,6 @@
 import * as React from "react"
 import mainImg from "../images/821.jpg"
+import './index.css'
 
 // styles
 const pageStyles = {
@@ -8,13 +9,15 @@ const pageStyles = {
   margin: 0,
   fontFamily: "-apple-system, Roboto, sans-serif, serif",
   width: "100vw",
-  hieght: "100vh",
+  height: "100vh",
   backgroundImage: `url(${mainImg})`,
   backgroundPosition: 'center',
   backgroundSize: 'cover',
   backgroundRepeat: 'no-repeat'
 }
 const headingStyles = {
+  paddingTop:18,
+  paddingLeft:18,
   marginTop: 0,
   marginBottom: 64,
   maxWidth: 320,
@@ -139,7 +142,7 @@ const IndexPage = () => {
     <main style={pageStyles}>
       <title>Home Page</title>
       <h1 style={headingStyles}>
-        Cultura Hustle
+        Coming Soon
       </h1>
       {/* <img
         alt="Gatsby G Logo"
