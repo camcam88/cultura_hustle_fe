@@ -8,7 +8,7 @@ module.exports = {
       resolve: "gatsby-source-sanity",
       options: {
         projectId: "1qqd4ope",
-        dataset: "",
+        dataset: "production",
       },
     },
     "gatsby-plugin-styled-components",
