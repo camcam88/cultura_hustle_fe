@@ -1,7 +1,8 @@
 module.exports = {
   siteMetadata: {
     siteUrl: "https://www.yourdomain.tld",
-    title: "cultura-hustle",
+    title: "Premier Construction",
+    description: 'Helping our community build a better tomorrow'
   },
   plugins: [
     {
