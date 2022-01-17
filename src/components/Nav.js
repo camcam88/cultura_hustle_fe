@@ -1,7 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from 'gatsby';
+import Media from 'react-media';
 import styled from 'styled-components';
 import logo from '../images/logo.png'
+import icon from '../images/menuIcon.png'
+
 
 const NavLinks = styled.nav`
         display: flex;
@@ -9,6 +12,7 @@ const NavLinks = styled.nav`
         background-color: #222121;
         width: 100vw;
         height: 10vh;
+        align-items: flex-end;
     ul {
         list-style: none;
         display: flex;
@@ -24,33 +28,115 @@ const NavLinks = styled.nav`
     font-size: 1.4rem;
     text-decoration: none;
     }
+    .icon {
+        justify-self: center;
+        align-self: center;
+        padding-right: 0.8rem;
+    }
 `
 const Logo = styled.img`
     width: 190px;
     margin-top: 0;
     padding-top: 0;
 `
+const Icon = styled.img`
+    width: 78px;
+    height: 52px;
+`
+const Menu = styled.div`
+    width: 68vw;
+    height: 58vh;
+    position: absolute;
+    background-color: #e2dfda;
+    top: 40%;
+    right: 50%;
+    transform: translate(50%,-50%);
+    border: white solid 1px;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+        text-align: center;
+    ul {
+        margin: 0;
+        padding: 0;
+        height: 50%;
+        display: flex;
+        align-items: stretch;
+        flex-direction: column;
+        a {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            text-align: center;
+            color: #222121;
+            font-weight: 500;
+            font-size: 2rem;
+        }
+    }
+
+`
 export default function Nav() {
+
+    const [toggled, setToggled] =useState(false)
+    const handleCLick = ()=>{
+        setToggled(!toggled)
+    }
+
     return (
             <>
-                <NavLinks>
-                    <ul>
-                        <li>
-                            <Link to="/">
-                                <Logo src={logo} alt=""/>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/contact/">Contact Us</Link>
-                        </li>
-                        <li>
-                            <Link to="/gallery/">Gallery</Link>
-                        </li>
-                        <li>
-                            <Link to="/community/">Our Community</Link>
-                        </li>
-                    </ul>
-                </NavLinks>
+            <Media queries={{ small: { maxWidth: 1000 } }}>
+
+                        {matches =>
+                            matches.small? (
+                                <NavLinks>
+                                    <ul>
+                                        <li>
+                                            <Link to="/">
+                                                <Logo src={logo} alt=""/>
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                    <Icon className="icon" src={icon} alt="icon" onClick={()=>{handleCLick()}}/>
+                                    {
+                                        toggled? <Menu>
+                                        <ul>
+                                            <li>
+                                                <Link to="/contact/" onClick={()=>{handleCLick()}}>Contact Us</Link>
+                                            </li>
+                                            <li>
+                                                <Link to="/gallery/" onClick={()=>{handleCLick()}}>Gallery</Link>
+                                            </li>
+                                            <li>
+                                                <Link to="/community/" onClick={()=>{handleCLick()}}>Our Community</Link>
+                                            </li>                                                            
+                                        </ul>
+                                    </Menu>  :
+                                    ''
+                                    }                                                             
+                                </NavLinks>
+                            ): (
+                                <NavLinks>
+                                    <ul>
+                                        <li>
+                                            <Link to="/">
+                                                <Logo src={logo} alt=""/>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/contact/">Contact Us</Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/gallery/">Gallery</Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/community/">Our Community</Link>
+                                        </li>                                                            
+                                    </ul>
+                                </NavLinks>
+                            )
+
+                        }
+
+            </Media>
             </>
         );
     }
