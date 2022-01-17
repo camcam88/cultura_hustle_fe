@@ -1,5 +1,5 @@
 module.exports = {
-  pathPrefix: "cultura_hustle_fe",
+  pathPrefix: "/cultura_hustle_fe",
   siteMetadata: {
     siteUrl: "https://www.yourdomain.tld",
     title: "Premier Construction",
