@@ -4,6 +4,7 @@ import Media from 'react-media';
 import styled from 'styled-components';
 import logo from '../images/logo.png'
 import icon from '../images/menuIcon.png'
+import closeBtn from '../images/closeBtn.png'
 
 
 const NavLinks = styled.nav`
@@ -40,18 +41,16 @@ const Logo = styled.img`
     padding-top: 0;
 `
 const Icon = styled.img`
-    width: 78px;
-    height: 52px;
+    width: 70px;
+    height: 40px;
 `
 const Menu = styled.div`
-    width: 68vw;
-    height: 58vh;
+    width: 100vw;
+    height: 100vh;
     position: absolute;
     background-color: #e2dfda;
-    top: 40%;
-    right: 50%;
-    transform: translate(50%,-50%);
-    border: white solid 1px;
+    top: 0;
+    border: #0f0f0f solid 1px;
     border-radius: 2px;
     display: flex;
     justify-content: center;
@@ -73,6 +72,12 @@ const Menu = styled.div`
         }
     }
 
+`
+const CloseBtnImg = styled.img`
+    width: 8vw;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
 `
 export default function Nav() {
 
@@ -98,6 +103,7 @@ export default function Nav() {
                                     <Icon className="icon" src={icon} alt="icon" onClick={()=>{handleCLick()}}/>
                                     {
                                         toggled? <Menu>
+                                    <>
                                         <ul>
                                             <li>
                                                 <Link to="/contact/" onClick={()=>{handleCLick()}}>Contact Us</Link>
@@ -109,6 +115,8 @@ export default function Nav() {
                                                 <Link to="/community/" onClick={()=>{handleCLick()}}>Our Community</Link>
                                             </li>                                                            
                                         </ul>
+                                        <CloseBtnImg src={closeBtn} alt="close button" onClick={()=>{handleCLick()}}/>
+                                    </>    
                                     </Menu>  :
                                     ''
                                     }                                                             
